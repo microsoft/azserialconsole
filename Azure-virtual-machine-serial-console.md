@@ -13,6 +13,13 @@ Currently this service is in **preview** and access to Serial Console for the Vi
 
 ## Accessing Serial Console
 
+Serial Console for a Virutal Machine is only access via [Azure portal](https://portal.azure.com). Below are the steps to access Serial Console for a Virtual Machine via portal 
+
+1. Open the Virtual Machine that you want to access in Azure Portal 
+2. Scroll down onto the Support + Troubleshooting section 
+3. Click in Serial Console (Preview) to access serial console 
+
+![](https://github.com/Microsoft/azserialconsole/blob/master/images/SerialConsole-LinuxAccess.gif)
 
 ## Accessing Serial Console for Linux ( Distro Specific Scenarios ) 
 
