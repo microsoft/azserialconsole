@@ -21,11 +21,55 @@ Serial Console for a Virutal Machine is only access via [Azure portal](https://p
 
 ![](https://github.com/Microsoft/azserialconsole/blob/master/images/SerialConsole-LinuxAccess.gif)
 
+> [!NOTE] 
+> Only subscriptions that are whitelisted as a part of early access preview will be able to see Serial Console section in the portal. Please also note that serial console requires local user with password configured. At this VMs only configured with public key wont have access to serial console. To create a local user with password follow [VM Access Extension](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-vmaccess-extension) to create local user with password.
+
+## Serial Console  Security 
+
+### Access Security 
+Access to Serial console is limited to users who have [VM Contributors](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-built-in-roles#virtual-machine-contributor) or above access to the Virtual Machine. If your AAD tenant requires Multi-Factor Authentication then access to serial console will also need MFA as its access is via [Azure Portal](https://portal.azure.com).
+
+### Channel Security
+
+All data is sent back and forth is encrypted on the wire.
+
+### Audit logs
+
+All access to Serial Console are currently logged in the [boot diagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/boot-diagnostics) logs of the virtual machine. Access to these logs are owned and controlled by the Virtual Machine Administrator.  
+
+>[!CAUTION] While no access passwords for the console are logged. However if commands run within a the console contains passwords/secrets those will be logged in the Virtual Machine boot diagnostics logs. No body other than readers of diagnostics storage account have access to these, however we recommend following the best practice of using SSH console for all secerts related work. 
+
+## Common Scenarios for accessing Serial Console 
+
+Scenario          | Actions in Serial Console                |  OS Applicability 
+------------------|:----------------------------------------:|------------------:
+Broken FSTAB file | Enter key to continue and fix fstab file | Linux 
+Incorrect Firewall rules | Access Serial Console and fix iptables/Windows firewall rules | Linux/Windows 
+Filesystem corruption/check | Access Serial Console and recover filesytem | Linux/Windows 
+SSH/RDP configuration issues | Access Serial Console and change settngs | Linux/Windows 
+Network lock down system| Access Serial Console via portal to manage system | Linux/Windows 
+Interacting with bootloader | Access GRUB/BCD via serial console | Linux/Windows 
+
 ## Accessing Serial Console for Linux ( Distro Specific Scenarios ) 
+
+Most [Endorsed Azure Linux Distributions](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros) have serial console configured by default. Just by clicking in the portal on the Serial console section will provide access to the console. 
 
 ### Access for RedHat 
 
+RedHat Images available on Azure has Serial Console enabled by default. Single User Mode in Red Hat requires root user to be enabled, which is by default disabled. If you have a need to enable Single user mode , use the following instructions 
+
+1. Login to the Red Hat system via SSH
+2. Enable password for root user 
+ * passwd root ( set a strong root password )
+3. Ensure root user can only login via ttyS0
+ * edit /etc/ssh/sshd_config and ensure PermitRootLogin is set to no
+ * edit /etc/securetty file to only allow logins via ttyS0 
+
+Now if the system boots into single user mode you can login via root password.
+
 ### Access for Ubuntu 
+
+Ubuntu Images available on Azure has Serial Console enabled by default. If the system boots into Single user mode you can access without additional credentials. 
 
 ### Access for CoreOS
 
