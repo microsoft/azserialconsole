@@ -108,6 +108,21 @@ Windows Images on Azure does not have [Special Administrative Console](https://t
 
 ## Errors
 
+Most errors are transient in nature and retrying connection address these. Below table shows a list of errors and mitigations 
+
+Error                            |   Mitigation 
+---------------------------------|:--------------------------------------------:|
+Error 500 Message: Unable to determine the resource group for the boot diagnostics storage account | Ensure that that user has access to boot diagnostics storage account for the said VM 
+Error 500 Message: Server encountered an internal error | Please retry, if the issue persists please contact azserialhelp@microsoft.com
+
+## Known Issues 
+As we are still in the early stages for Serial Console access, we are working through some known issues, below is the list of these with possible workarounds 
+
+
+Issue                           |   Mitigation 
+---------------------------------|:--------------------------------------------:|
+First time connection to Serial console times out | Retrying connection should mitigate this issue. If the issue persists please contact azserialhelp@microsoft.com  
+There is no option with VMSS Instance Serial Console | At the time of preview we do not have access to serial console for VMSS Instances 
 
 
 ## Availability 
