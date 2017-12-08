@@ -73,16 +73,37 @@ Ubuntu Images available on Azure has Serial Console enabled by default. If the s
 
 ### Access for CoreOS
 
-### Access for SUSE 
+CoreOS Images available on Azure has Serial Console enabled by default. If required system can be booted into Single user mode via changing GRUB parameters and adding coreos.autologin=ttyS0 would enable core user to login and available in Serial Console. 
+
+### Access for SUSE
+
+SLES Images available on Azure currently does not have Serial Console enabled by default. To enable Serial Console on SLES please follow the [KB article](https://www.novell.com/support/kb/doc.php?id=3456486). 
+
 
 ### Access for CentOS
 
+CentOS Images available on Azure has Serial Console enabled by default. For Single user mode please follow instructions similar to Red Hat Images above. 
+
 ### Access for Oracle Linux
+
+Oracle Linux Images available on Azure has Serial Console enabled by default. For Single user mode please follow instructions similar to Red Hat Images above.
 
 ### Access for Custom Linux Image
 
+To enable Serial Console for your Custom Linux VM Image, enable console in inittab to run a terminal on ttyS0. Below is an example to add in inittab file 
+
+S0:12345:respawn:/sbin/agetty -L 115200 console vt102  
 
 ## Accessing Serial Console for Windows 
+
+Windows Images on Azure does not have [Special Administrative Console](https://technet.microsoft.com/en-us/library/cc787940(v=ws.10).aspx) (SAC) enabled by default. To enable Serial console for Windows Virtual Machines please the following steps 
+
+1. Connect to your Windows Virtual Machine via Remote Desktop
+2. From an Administrative command prompt run the following commands 
+* bcdedit /ems {current} on
+* bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
+3. Reboot the system for the SAC console to be enabled
+
 
 
 ## Errors
