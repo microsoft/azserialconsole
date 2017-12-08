@@ -104,11 +104,11 @@ Windows Images on Azure does not have [Special Administrative Console](https://t
 * bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
 3. Reboot the system for the SAC console to be enabled
 
-
+![](https://github.com/Microsoft/azserialconsole/blob/master/images/SerialConsole-PrivatePreviewWindows.gif)
 
 ## Errors
 
-### Examples
+
 
 ## Availability 
 The current Preview is available in **West US Central** Region of Azure. 
