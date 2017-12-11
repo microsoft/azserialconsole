@@ -33,11 +33,10 @@ All data is sent back and forth is encrypted on the wire.
 ### Audit logs
 All access to Serial Console are currently logged in the [boot diagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/boot-diagnostics) logs of the virtual machine. Access to these logs are owned and controlled by the Azure Virtual Machine administrator.  
 
->[!CAUTION] While no access passwords for the console are logged, if commands run within a the console contain passwords or secrets, those will be logged in the Virtual Machine boot diagnostics logs. Only individuals with read permissions to the diagnostics storage account have access to these, however we recommend following the best practice of using SSH console for all secerts related work. 
+>[!CAUTION] While no access passwords for the console are logged, if commands run within the console contain or output passwords, secrets, user names or any other form of Personally Identifiable Information (PII), those will be written to the Virtual Machine boot diagnostics logs in order to implement the serial console's scrollback functionality. These logs are circular and only individuals with read permissions to the diagnostics storage account have access to them, however we recommend following the best practice of using the SSH console for anything that may involve secrets and/or PII. 
 
 ### Concurrent usage
 If a user is connected to Serial Console and another user successfully requests access to that same virtual machine, the first user will be disconnected and the second user connected in a manner akin to the first user standing up and leaving the physical console and a new user sitting down.
-
 
 ## Common Scenarios for accessing Serial Console 
 Scenario          | Actions in Serial Console                |  OS Applicability 
@@ -116,9 +115,9 @@ There is no option to enable/disable Serial Console | We are working on this fun
 The current Preview is available in **West US Central** Region of Azure. 
 
 ## FAQ
-1. When will Serial Console be made available in other regions 
+1. When will Serial Console be made available in other regions?
 * We are working on scaling and stablizing the service. In addition we also need to add additional functionality for this service. We will keep the community posted on updates on when we can expand to other Azure regions 
-2. How can I send feedback 
+2. How can I send feedback?
 * Send feedback via azserialhelp@microsoft.com or in the virtual machine category of http://feedback.azure.com 
 3. I am not a part of early access preview but I want to participate, how can I?
 * We will be opening access to more subscriptions shortly.
