@@ -38,6 +38,8 @@ All access to Serial Console are currently logged in the [boot diagnostics](http
 ### Concurrent usage
 If a user is connected to Serial Console and another user successfully requests access to that same virtual machine, the first user will be disconnected and the second user connected in a manner akin to the first user standing up and leaving the physical console and a new user sitting down.
 
+>[!CAUTION] This means that the user who gets disconnected will not be logged out! The ability to enforce a logout upon disconnect (via SIGHUP or similar mechanism) is still in development.
+
 ## Common Scenarios for accessing Serial Console 
 Scenario          | Actions in Serial Console                |  OS Applicability 
 ------------------|:----------------------------------------:|------------------:
