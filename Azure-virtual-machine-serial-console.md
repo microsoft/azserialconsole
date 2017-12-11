@@ -77,7 +77,7 @@ SLES images available on Azure currently do not have serial console enabled by d
 CentOS images available on Azure have serial console enabled by default. For Single User Mode please follow instructions similar to Red Hat Images above. 
 
 ### Access for Oracle Linux
-Oracle Linux Images available on Azure have serial console enabled by default. For Single User Mode please follow instructions similar to Red Hat Images above.
+Oracle Linux images available on Azure have serial console enabled by default. For Single User Mode please follow instructions similar to Red Hat Images above.
 
 ### Access for Custom Linux Image
 To enable Serial Console for your custom Linux VM image, enable console in /etc/inittab to run a terminal on ttyS0. Below is an example to add this in the inittab file 
@@ -108,15 +108,15 @@ As we are still in the early stages for Serial Console access, we are working th
 
 Issue                           |   Mitigation 
 ---------------------------------|:--------------------------------------------:|
-First time connection to Serial console times out | Retrying connection should mitigate this issue. If the issue persists please contact azserialhelp@microsoft.com  
+First time connection via Serial Console times out | Retrying connection should mitigate this issue. If the issue persists please contact azserialhelp@microsoft.com  
 There is no option with VMSS instance Serial Console | At the time of preview we do not support access to serial console for VMSS instances 
-There is no option to enable/disable serial console | We are working on this functionality and will come in our upcoming releases
+There is no option to enable/disable Serial Console | We are working on this functionality and will come in our upcoming releases
 
 ## Availability 
 The current Preview is available in **West US Central** Region of Azure. 
 
 ## FAQ
-1. When will Serial console be made available in other regions 
+1. When will Serial Console be made available in other regions 
 * We are working on scaling and stablizing the service. In addition we also need to add additional functionality for this service. We will keep the community posted on updates on when we can expand to other Azure regions 
 2. How can I send feedback 
 * Send feedback via azserialhelp@microsoft.com or in the virtual machine category of http://feedback.azure.com 
