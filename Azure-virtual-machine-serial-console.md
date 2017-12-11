@@ -5,13 +5,13 @@
 > ACCESS VIA SERIAL CONSOLE SHOULD BE LIMITED TO DEV-TEST VIRTUAL MACHINES. WE STRONGLY RECOMMEND NOT TO USE THIS FOR ANY PRODUCTION VIRTUAL MACHINE.
 >
 
-Azure's Virtual Machine Serial Console provides access to Serial Console for Linux and Windows Virtual Machines on Azure. This Serial connection is to COM1 serial port of the Virtual Machine and provides access to the Virtual Machine regardless of that Virtual Machine's network / operating system state. Access to Serial Console for a Virtual Machine can be done only via Azure Portal and for those who have VM Contributor or above access. 
+Azure's Virtual Machine Serial Console provides access to a text-based console for Linux and Windows Virtual Machines on Azure. This serial connection is to COM1 serial port of the virtual machine and provides access to the virtual machine regardless of that virtual machine's network / operating system state. Access to Serial Console for a virtual machine can be done only via Azure Portal and for those who have VM Contributor or above access. 
 
 ### Important information
-Currently this service is in **preview** and access to Serial Console for the Virtual Machine is limited to white-listed subscriptions who participated in early access preview and for Virtual Machines available in West Central US region.
+Currently this service is in **preview** and access to Serial Console for Virtual Machines is limited to white-listed subscriptions who are participating in early access preview and only for virtual machines available in West Central US region.
 
 ## Accessing Serial Console
-Serial Console for a Virtual Machine is only access via [Azure portal](https://portal.azure.com). Below are the steps to access Serial Console for a Virtual Machine via portal 
+Serial Console for Virtual Machines is only accessible via [Azure portal](https://portal.azure.com). Below are the steps to access Serial Console for Virtual Machines via portal 
 
 1. Open the Virtual Machine that you want to access in Azure Portal 
 2. Scroll down onto the Support + Troubleshooting section 
@@ -20,7 +20,7 @@ Serial Console for a Virtual Machine is only access via [Azure portal](https://p
 ![](https://github.com/Microsoft/azserialconsole/blob/master/images/SerialConsole-LinuxAccess.gif)
 
 > [!NOTE] 
-> Only subscriptions that are white-listed as a part of early access preview will be able to see Serial Console section in the portal. Please also note that serial console requires local user with password configured. At this VMs only configured with public key wont have access to serial console. To create a local user with password follow [VM Access Extension](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-vmaccess-extension) to create local user with password.
+> Only subscriptions that are white-listed as a part of early access preview will be able to see Serial Console section in the portal. Please also note that serial console requires a local user with a password configured. At this time, VMs only configured with SSH public key will not have access to serial console. To create a local user with password follow [VM Access Extension](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-vmaccess-extension) and create local user with password.
 
 ## Serial Console  Security 
 
@@ -31,62 +31,66 @@ Access to Serial console is limited to users who have [VM Contributors](https://
 All data is sent back and forth is encrypted on the wire.
 
 ### Audit logs
-All access to Serial Console are currently logged in the [boot diagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/boot-diagnostics) logs of the virtual machine. Access to these logs are owned and controlled by the Virtual Machine Administrator.  
+All access to Serial Console are currently logged in the [boot diagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/boot-diagnostics) logs of the virtual machine. Access to these logs are owned and controlled by the Azure Virtual Machine administrator.  
 
->[!CAUTION] While no access passwords for the console are logged. However if commands run within a the console contains passwords/secrets those will be logged in the Virtual Machine boot diagnostics logs. No body other than readers of diagnostics storage account have access to these, however we recommend following the best practice of using SSH console for all secerts related work. 
+>[!CAUTION] While no access passwords for the console are logged, if commands run within a the console contain passwords or secrets, those will be logged in the Virtual Machine boot diagnostics logs. Only individuals with read permissions to the diagnostics storage account have access to these, however we recommend following the best practice of using SSH console for all secerts related work. 
+
+### Concurrent usage
+If a user is connected to Serial Console and another user successfully requests access to that same virtual machine, the first user will be disconnected and the second user connected in a manner akin to the first user standing up and leaving the physical console and a new user sitting down.
+
 
 ## Common Scenarios for accessing Serial Console 
 Scenario          | Actions in Serial Console                |  OS Applicability 
 ------------------|:----------------------------------------:|------------------:
-Broken FSTAB file | Enter key to continue and fix fstab file | Linux 
-Incorrect Firewall rules | Access Serial Console and fix iptables/Windows firewall rules | Linux/Windows 
+Broken FSTAB file | Enter key to continue and fix fstab file using a text editor | Linux 
+Incorrect firewall rules | Access Serial Console and fix iptables or Windows firewall rules | Linux/Windows 
 Filesystem corruption/check | Access Serial Console and recover filesystem | Linux/Windows 
 SSH/RDP configuration issues | Access Serial Console and change settings | Linux/Windows 
 Network lock down system| Access Serial Console via portal to manage system | Linux/Windows 
 Interacting with bootloader | Access GRUB/BCD via serial console | Linux/Windows 
 
 ## Accessing Serial Console for Linux ( Distro Specific Scenarios ) 
-Most [Endorsed Azure Linux Distributions](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros) have serial console configured by default. Just by clicking in the portal on the Serial console section will provide access to the console. 
+In order for Serial Console to function properly, the guest operating system must be configured to read and write console messages to the serial port. Most [Endorsed Azure Linux Distributions](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros) have serial console configured by default. Just by clicking in the portal on the Serial console section will provide access to the console. 
 
 ### Access for RedHat 
-RedHat Images available on Azure has Serial Console enabled by default. Single User Mode in Red Hat requires root user to be enabled, which is by default disabled. If you have a need to enable Single user mode , use the following instructions 
+RedHat Images available on Azure have serial console enabled by default. Single User Mode in Red Hat requires root user to be enabled, which is disabled by default. If you have a need to enable Single user mode, use the following instructions 
 
 1. Login to the Red Hat system via SSH
 2. Enable password for root user 
- * passwd root ( set a strong root password )
+ * `passwd root` ( set a strong root password )
 3. Ensure root user can only login via ttyS0
- * edit /etc/ssh/sshd_config and ensure PermitRootLogin is set to no
- * edit /etc/securetty file to only allow logins via ttyS0 
+ * `edit /etc/ssh/sshd_config` and ensure PermitRootLogin is set to no
+ * `edit /etc/securetty file` to only allow logins via ttyS0 
 
 Now if the system boots into single user mode you can login via root password.
 
 ### Access for Ubuntu 
-Ubuntu Images available on Azure has Serial Console enabled by default. If the system boots into Single user mode you can access without additional credentials. 
+Ubuntu images available on Azure have serial console enabled by default. If the system boots into Single User Mode you can access without additional credentials. 
 
 ### Access for CoreOS
-CoreOS Images available on Azure has Serial Console enabled by default. If required system can be booted into Single user mode via changing GRUB parameters and adding coreos.autologin=ttyS0 would enable core user to login and available in Serial Console. 
+CoreOS images available on Azure have serial console enabled by default. If required system can be booted into Single User Mode via changing GRUB parameters and adding coreos.autologin=ttyS0 would enable core user to login and available in Serial Console. 
 
 ### Access for SUSE
-SLES Images available on Azure currently does not have Serial Console enabled by default. To enable Serial Console on SLES please follow the [KB article](https://www.novell.com/support/kb/doc.php?id=3456486). 
+SLES images available on Azure currently do not have serial console enabled by default. To enable serial console on SLES please follow the [KB article](https://www.novell.com/support/kb/doc.php?id=3456486). 
 
 ### Access for CentOS
-CentOS Images available on Azure has Serial Console enabled by default. For Single user mode please follow instructions similar to Red Hat Images above. 
+CentOS images available on Azure have serial console enabled by default. For Single User Mode please follow instructions similar to Red Hat Images above. 
 
 ### Access for Oracle Linux
-Oracle Linux Images available on Azure has Serial Console enabled by default. For Single user mode please follow instructions similar to Red Hat Images above.
+Oracle Linux images available on Azure have serial console enabled by default. For Single User Mode please follow instructions similar to Red Hat Images above.
 
 ### Access for Custom Linux Image
-To enable Serial Console for your Custom Linux VM Image, enable console in /etc/inittab to run a terminal on ttyS0. Below is an example to add this in the inittab file 
+To enable Serial Console for your custom Linux VM image, enable console in /etc/inittab to run a terminal on ttyS0. Below is an example to add this in the inittab file 
 
-S0:12345:respawn:/sbin/agetty -L 115200 console vt102  
+`S0:12345:respawn:/sbin/agetty -L 115200 console vt102` 
 
 ## Accessing Serial Console for Windows 
-Windows Images on Azure does not have [Special Administrative Console](https://technet.microsoft.com/en-us/library/cc787940(v=ws.10).aspx) (SAC) enabled by default. To enable Serial console for Windows Virtual Machines please the following steps 
+Windows images on Azure do not have [Special Administrative Console](https://technet.microsoft.com/en-us/library/cc787940(v=ws.10).aspx) (SAC) enabled by default. To enable Serial console for Windows Virtual Machines please the following steps: 
 
-1. Connect to your Windows Virtual Machine via Remote Desktop
+1. Connect to your Windows virtual machine via Remote Desktop
 2. From an Administrative command prompt run the following commands 
-* bcdedit /ems {current} on
-* bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
+* `bcdedit /ems {current} on`
+* `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 3. Reboot the system for the SAC console to be enabled
 
 ![](https://github.com/Microsoft/azserialconsole/blob/master/images/SerialConsole-PrivatePreviewWindows.gif)
@@ -104,15 +108,15 @@ As we are still in the early stages for Serial Console access, we are working th
 
 Issue                           |   Mitigation 
 ---------------------------------|:--------------------------------------------:|
-First time connection to Serial console times out | Retrying connection should mitigate this issue. If the issue persists please contact azserialhelp@microsoft.com  
-There is no option with VMSS Instance Serial Console | At the time of preview we do not have access to serial console for VMSS Instances 
-There is no option to enable/disable serial console | We are working on this functionality and will come in our upcoming releases
+First time connection via Serial Console times out | Retrying connection should mitigate this issue. If the issue persists please contact azserialhelp@microsoft.com  
+There is no option with VMSS instance Serial Console | At the time of preview we do not support access to serial console for VMSS instances 
+There is no option to enable/disable Serial Console | We are working on this functionality and will come in our upcoming releases
 
 ## Availability 
 The current Preview is available in **West US Central** Region of Azure. 
 
 ## FAQ
-1. When will Serial console be made available in other regions 
+1. When will Serial Console be made available in other regions 
 * We are working on scaling and stablizing the service. In addition we also need to add additional functionality for this service. We will keep the community posted on updates on when we can expand to other Azure regions 
 2. How can I send feedback 
 * Send feedback via azserialhelp@microsoft.com or in the virtual machine category of http://feedback.azure.com 
