@@ -33,10 +33,11 @@ All data is sent back and forth is encrypted on the wire.
 ### Audit logs
 All access to Serial Console are currently logged in the [boot diagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/boot-diagnostics) logs of the virtual machine. Access to these logs are owned and controlled by the Azure Virtual Machine administrator.  
 
+>[!CAUTION] While no access passwords for the console are logged, if commands run within a the console contain passwords or secrets, those will be logged in the Virtual Machine boot diagnostics logs. Only individuals with read permissions to the diagnostics storage account have access to these, however we recommend following the best practice of using SSH console for all secerts related work. 
+
 ### Concurrent usage
 If a user is connected to Serial Console and another user successfully requests access to that same virtual machine, the first user will be disconnected and the second user connected in a manner akin to the first user standing up and leaving the physical console and a new user sitting down.
 
->[!CAUTION] While no access passwords for the console are logged, if commands run within a the console contain passwords or secrets, those will be logged in the Virtual Machine boot diagnostics logs. Only individuals with read permissions to the diagnostics storage account have access to these, however we recommend following the best practice of using SSH console for all secerts related work. 
 
 ## Common Scenarios for accessing Serial Console 
 Scenario          | Actions in Serial Console                |  OS Applicability 
