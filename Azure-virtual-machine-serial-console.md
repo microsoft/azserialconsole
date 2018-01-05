@@ -120,9 +120,11 @@ The current Preview is available in **West US Central** Region of Azure.
 1. When will Serial Console be made available in other regions?
 * We are working on scaling and stablizing the service. In addition we also need to add additional functionality for this service. We will keep the community posted on updates on when we can expand to other Azure regions 
 2. How can I send feedback?
-* Send feedback via azserialhelp@microsoft.com or in the virtual machine category of http://feedback.azure.com 
+* Please provide feedback as an issue by going to aka.ms/serialconsolefeedback . Alternatively(less preferred) Send feedback via azserialhelp@microsoft.com or in the virtual machine category of http://feedback.azure.com 
 3. I am not a part of early access preview but I want to participate, how can I?
 * We will be opening access to more subscriptions shortly.
+4. I get an Error "Existing console has conflicting OS type "Windows" with the requested OS type of Linux
+* This is a know issue to fix this, simply open [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) in bash mode and retry.
 
 ## Next Steps
 Learn more about [bootdiagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/boot-diagnostics)
