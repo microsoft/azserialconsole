@@ -40,6 +40,9 @@ If a user is connected to Serial Console and another user successfully requests 
 
 >[!CAUTION] This means that the user who gets disconnected will not be logged out! The ability to enforce a logout upon disconnect (via SIGHUP or similar mechanism) is still in development.
 
+### Disable feature
+The serial console functionality can be deactivated for specific VMs by disabling that VM's boot diagnostics setting.
+
 ## Common Scenarios for accessing Serial Console 
 Scenario          | Actions in Serial Console                |  OS Applicability 
 ------------------|:----------------------------------------:|------------------:
@@ -109,9 +112,12 @@ As we are still in the early stages for Serial Console access, we are working th
 
 Issue                           |   Mitigation 
 ---------------------------------|:--------------------------------------------:|
-First time connection via Serial Console times out | Retrying connection should mitigate this issue. If the issue persists please contact azserialhelp@microsoft.com  
 There is no option with VMSS instance Serial Console | At the time of preview we do not support access to serial console for VMSS instances 
 There is no option to enable/disable Serial Console | We are working on this functionality and will come in our upcoming releases
+Access to serial console is denied for service administrators with no additional role assignments | Add an explicit role 'Owner' role assignment at the subscription, resource group, or VM level for the service administrator.
+Error 400-Bad Request when targeting VMs with name containing multiple hyphens | Target a virtual machine with zero or one hyphens
+Opening the serial console causes the portal to initially scroll to the left | Scroll portal back over to the right
+Error _Unable to determine the resource group for the boot diagnostics storage account '<account>'. Verify that boot diagnostics is enabled for this VM and you have access to this storage account._ For VM in subscriptions with +1000 objects | Target a virtual machine in a subscription with less objects.
 
 ## Availability 
 The current Preview is available in **West US Central** Region of Azure. 
