@@ -111,10 +111,10 @@ Error 500 Message: Server encountered an internal error | Please retry, if the i
 As we are still in the early stages for Serial Console access, we are working through some known issues, below is the list of these with possible workarounds 
 
 Issue                           |   Mitigation 
----------------------------------|:--------------------------------------------:|
+---------------------------------|--------------------------------------------|
 There is no option with VMSS instance Serial Console | At the time of preview we do not support access to serial console for VMSS instances 
 There is no option to enable/disable Serial Console | We are working on this functionality and will come in our upcoming releases
-Access to serial console is denied for service administrators with no additional role assignments | Add an explicit role 'Owner' role assignment at the subscription, resource group, or VM level for the service administrator.
+You receive the following error even though you already have at least VM Contributor role permission to the VM: "The serial console connection to the VM encountered an error: 'Forbidden' (403) - You do not have the required permissions to use this VM serial console. Please make sure you have at least VM Contributor role permissions." | Currently there is a known issue where, even if you are an administrator for the subscription and show up as having the Owner role, you need to explicitly give your account the Owner role to avoid the 'Forbidden' error. In the Azure portal search field at the top right, search for **Subscriptions** and then select **Subscriptions** in the results to open it. Select the relevant subscription, then select **Access control (IAM)**. Click **Add**. For **Role** select **Owner**, and in the **Select** field search for your user account, select it, then click **Save** at the bottom.
 Error 400-Bad Request when targeting VMs with name containing multiple hyphens | Target a virtual machine with zero or one hyphens
 Opening the serial console causes the portal to initially scroll to the left | Scroll portal back over to the right
 Error _Unable to determine the resource group for the boot diagnostics storage account '<account>'. Verify that boot diagnostics is enabled for this VM and you have access to this storage account._ For VM in subscriptions with +1000 objects | Target a virtual machine in a subscription with less objects.
