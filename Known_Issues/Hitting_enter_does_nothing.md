@@ -7,7 +7,7 @@ When trying to use Azure Serial Console to connect to a Linux virtual machine yo
 This issue occurs when the serial console connection is successfully made to the virtual machine, but the virtual machine is not configured for input/output on the serial port.
 
 ## More Info ##
-Virtual machines published by [endorsed distribution](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros) partners to provision in Azure will already be configured with the necessary configuration to enable serial console.  However, if a virtual machine was uploaded to Azure or created from a custom image the necessary settings may not be in place.
+Virtual machines published by [endorsed distribution](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros) partners to provision in Azure will already be configured to enable serial console.  However, if a virtual machine was uploaded to Azure or created from a custom image the necessary settings may not be in place.
 
 _Note: certain VM misconfigurations may also cause failures to capture [boot diagnostics](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/boot-diagnostics) logging via serial output._
 
