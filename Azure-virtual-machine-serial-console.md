@@ -113,7 +113,8 @@ As we are still in the early stages for Serial Console access, we are working th
 Issue                           |   Mitigation 
 ---------------------------------|--------------------------------------------|
 There is no option with VMSS instance Serial Console | At the time of preview we do not support access to serial console for VMSS instances 
-Hitting enter after the connection banner does not show a login prompt | [Hitting enter does nothing](./Known_Issues/Hitting_enter_does_nothing.md)
+Hitting enter after the connection banner does not show a login prompt | [Hitting enter does nothing](./Known_issues/Hitting_enter_does_nothing.md)
+Only health information is shown when connecting to a Windows VM | [Only Windows health info presented](./Known_issues/Windows_Health_Info.md)
 
 ## Availability 
 The current preview is available in **West US Central** and **West Europe** regions of Azure.
