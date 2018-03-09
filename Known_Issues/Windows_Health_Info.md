@@ -3,7 +3,7 @@ When trying to use Azure Serial Console to connect to a Windows virtual machine 
 
 ```
 ======== Microsoft Azure VM Health Report - Start 2018-03-06T02:06:40.6256349Z ========
-{"reportTime":"2018-03-06T02:06:29.0389712Z","networkAdapters":[{"name":"Ethernet 2","status":"Up","macAddress":"00-0F-3A-A7-71-D0","ipProperties":[{"protocolVersion":4,"address":"10.0.1.4","isDhcpEnabled":true},{"protocolVersion":6,"address":"fe80::90e7:17ff:1ab5:522d%13","isDhcpEnabled":false}]},{"name":"Loopback Pseudo-Interface 1","status":"Up","macAddress":"","
+{"reportTime":"2018-03-06T02:06:29.0389712Z","networkAdapters":[{"name":"Ethernet 2","status":"Up","macAddress":"00-00-00-00-0-00","ipProperties":[{"protocolVersion":4,"address":"0.0.0.0","isDhcpEnabled":true},{"protocolVersion":6,"address":"0000::0000:0000:0000:0000%00","isDhcpEnabled":false}]},{"name":"Loopback Pseudo-Interface 1","status":"Up","macAddress":"","
 ...
 ```
 
