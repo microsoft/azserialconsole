@@ -89,7 +89,9 @@ To enable Serial Console for your custom Linux VM image, enable console in /etc/
 `S0:12345:respawn:/sbin/agetty -L 115200 console vt102` 
 
 ## Accessing Serial Console for Windows 
-Windows images on Azure do not have [Special Administrative Console](https://technet.microsoft.com/en-us/library/cc787940(v=ws.10).aspx) (SAC) enabled by default. To enable Serial console for Windows Virtual Machines please the following steps: 
+Windows images on Azure do not have [Special Administrative Console](https://technet.microsoft.com/en-us/library/cc787940(v=ws.10).aspx) (SAC) enabled by default. SAC is supported on server versions of Windows but is not available on client versions (e.g. Windows 10, Windows 8 or Windows 7).
+
+To enable Serial console for Windows Virtual Machines please the following steps: 
 
 1. Connect to your Windows virtual machine via Remote Desktop
 2. From an Administrative command prompt run the following commands 
