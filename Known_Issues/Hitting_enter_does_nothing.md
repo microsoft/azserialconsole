@@ -13,6 +13,7 @@ _Note: certain VM misconfigurations may also cause failures to capture [boot dia
 
 
 ## Resolution ##
+#### Linux Guest ####
 To ensure your Linux virtual machine works with Azure serial console, please follow the guidance: [Create and upload a Linux VHD in Azure](https://docs.microsoft.com/en-us/azure/virtualgeneric-machines/linux/create-upload-) for the distribution you are using. Specifically you will need to perform these steps from the preceding link:
 
 >Modify the kernel boot line in GRUB or GRUB2 to include the following parameters. This will also ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues:
@@ -25,6 +26,6 @@ To ensure your Linux virtual machine works with Azure serial console, please fol
 >  
 >    Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port. The `crashkernel` option may be left configured if desired, but note that this parameter will reduce the amount of available memory in the VM by 128MB or more, which may be problematic on the smaller VM sizes.
 
-
-
+#### Windows Guest ####
+Ensure you have enabled the [Special Administrative Console](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/serial-console#accessing-serial-console-for-windows).
 
