@@ -1,13 +1,24 @@
 ## System Request (SysRq) ##
 A SysRq is a sequence of keys understood by the Linux operation system kernel which can trigger a set of pre-defined actions. These commands are often used when virtual machine troubleshooting or recovery can not be performed through traditional administration (for example the VM is hung). Using the SysRq feature of Azure Serial Console will mimic pressing of the SysRq key and characters entered on a physical keyboard.
 
-Once the SysRq sequence is delivered, the kernel configuration will control how the system responds. For information on enabling and disabling SysRq, see the SysRq Admin Guide [text](https://www.kernel.org/doc/Documentation/admin-guide/sysrq.rst) | [markdown](https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/sysrq.rst).  Links to additional distribution specific documentation can be found below.
+Once the SysRq sequence is delivered, the kernel configuration will control how the system responds. For information on enabling and disabling SysRq, see the *SysRq Admin Guide* [text](https://www.kernel.org/doc/Documentation/admin-guide/sysrq.rst) | [markdown](https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/sysrq.rst).  
 
 The Azure Serial Console SysRq user interface will accept a sequence of SysRq commands entered into the dialog.  This allows for series of SysRq's to perform a high-level operation such as a safe reboot using: `REISUB`.
 
 ![](images/sysreq_UI.jpg)
 
 The SysRq command cannot be used on virtual machines that are stopped or whose kernel is in a non-responsive state. (for example a kernel panic).
+
+### Enabling SysRq ###
+As described in the *SysRq Admin Guide* above, SysRq can be configured such that all, none, or only certain commands are available. You can enable all SysRq commands using the step below but it will not survive a reboot:
+```
+echo "1" >/proc/sys/kernel/sysrq
+```
+To make the SysReq configuration persistent you can do the followig to enable all SysRq commands
+1. Adding the this line to */etc/sysctl.conf* <br>
+    `kernel.sysrq = 1`
+1. Rebooting or updating sysctl by running <br>
+    `sysctl -p`
 
 ### Command Keys ###
 From the SysRq Admin Guide above:
@@ -43,6 +54,7 @@ From the SysRq Admin Guide above:
 |``0``-``9`` | Sets the console log level, controlling which kernel messages will be printed to your console. (``0``, for example would make it so that only emergency messages like PANICs or OOPSes would make it to your console.)
 
 ### Distribution-specific documentation ###
+For distribution specific documentation on SysRq and steps to configure Linux to create a crash dump when it receives a SysRq "Crash" command, see the links below:
 #### Ubuntu ####
  - [Kernel Crash Dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 #### Red Hat ####

@@ -7,7 +7,13 @@ The Serial Console can be used to send an NMI to an Azure virtual machine. Once 
 For information on configuring Windows to create a crash dump when it receives an NMI, see: [How to generate a complete crash dump file or a kernel crash dump file by using an NMI on a Windows-based system](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ### Linux ###
-For information on configuring Linux to create a crash dump when it receives an NMI, including `unknown_nmi_panic`, `panic_on_io_nmi`, and `panic_on_unrecovered_nmi`, see: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) and the distribution specific documentation below:
+For Linux systems which support sysctl for configuring kernel parameters, you can enable a panic when receiving this NMI by using the following:
+1. Adding the this line to */etc/sysctl.conf* <br>
+    `kernel.panic_on_unrecovered_nmi=1`
+1. Rebooting or updating sysctl by running <br>
+    `sysctl -p`
+
+For additional information on Linux kernel configurations, including `unknown_nmi_panic`, `panic_on_io_nmi`, and `panic_on_unrecovered_nmi`, see: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). For distribution specific documentation  on NMI and steps to configure Linux to create a crash dump when it receives an NMI, see the links below:
  
  #### Ubuntu ####
  - [Kernel Crash Dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
