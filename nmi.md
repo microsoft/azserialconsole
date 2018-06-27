@@ -1,7 +1,10 @@
 ## Non-Maskable Interrupt (NMI) ##
 A non-maskable interrupt(NMI) is designed to create a signal that sofware on a virtual machine will not ignore. Historically, NMIs have been used to monitor for hardware issues on systems that required specific response times.  Today, programmers and system administrators often use NMI as a mechanism to debug or troubleshoot systems which are hung.
 
-The Serial Console can be used to send an NMI to an Azure virtual machine. Once the NMI is delivered, the virtual machine configuration will control how the system respond.  Both Windows and Linux operating systems can be configured to crash and create a memory dump when receiving an NMI.
+The Serial Console can be used to send a NMI to an Azure virtual machine using the keyboard icon in the command bar shown below. Once the NMI is delivered, the virtual machine configuration will control how the system respond.  Both Windows and Linux operating systems can be configured to crash and create a memory dump when receiving an NMI.
+
+![](images/commandmenu.jpg) <br>
+_Note: for Windows VMs only the NMI command will be shown_
 
 ### Windows ###
 For information on configuring Windows to create a crash dump when it receives an NMI, see: [How to generate a complete crash dump file or a kernel crash dump file by using an NMI on a Windows-based system](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)

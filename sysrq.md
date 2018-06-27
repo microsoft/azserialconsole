@@ -3,7 +3,10 @@ A SysRq is a sequence of keys understood by the Linux operation system kernel wh
 
 Once the SysRq sequence is delivered, the kernel configuration will control how the system responds. For information on enabling and disabling SysRq, see the *SysRq Admin Guide* [text](https://www.kernel.org/doc/Documentation/admin-guide/sysrq.rst) | [markdown](https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/sysrq.rst).  
 
-The Azure Serial Console SysRq user interface will accept a sequence of SysRq commands entered into the dialog.  This allows for series of SysRq's to perform a high-level operation such as a safe reboot using: `REISUB`.
+The Azure Serial Console can be used to send a SysRq to an Azure virtual machine using the keyboard icon in the command bar shown below. 
+![](images/commandmenu.jpg)
+
+Choosing "Send SysRq Command" will open a dialog which provides common SysRq options or accepts a sequence of SysRq commands entered into the dialog.  This allows for series of SysRq's to perform a high-level operation such as a safe reboot using: `REISUB`.
 
 ![](images/sysreq_UI.jpg)
 
