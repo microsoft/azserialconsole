@@ -5,7 +5,7 @@ Once the SysRq sequence is delivered, the kernel configuration will control how 
 
 The Azure Serial Console SysRq user interface will accept a sequence of SysRq commands entered into the dialog.  This allows for series of SysRq's to perform a high-level operation such as a safe reboot using: `REISUB`.
 
-![](../images/sysreq_UI.jpg)
+![](images/sysreq_UI.jpg)
 
 The SysRq command cannot be used on virtual machines that are stopped or whose kernel is in a non-responsive state. (for example a kernel panic).
 
