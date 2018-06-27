@@ -22,3 +22,7 @@ For information on configuring Linux to create a crash dump when it receives an 
 #### CoreOS ####
 - [Collecting crash logs](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
+
+### Known Issues ###
+- *If the serial console connection is open for several minutes without sending either a [SysRq](sysrq.md) or [NMI](nmi.md), attempts to send a [SysRq](sysrq.md) or [NMI](nmi.md) may not initially return a response and cause a console error after several seconds.*
+- *If the the virtual machine is rebooted in the same session, attempts to send a [SysRq](sysrq.md) or [NMI](nmi.md) may fail after the serial console session reconnection.*
