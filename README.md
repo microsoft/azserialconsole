@@ -1,11 +1,17 @@
-# Azure's Virtual Machine Serial Console -- Early Access Preview (ONLY AVAILABLE IN WEST CENTRAL US REGION)
+# Azure's Virtual Machine Serial Console -- Public Preview
 [!NOTE] Previews are made available to you on the condition that you agree to the terms of use. For more information, see [Microsoft Azure Supplemental Terms of Use for Microsoft Azure Previews.] (https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) ACCESS VIA SERIAL CONSOLE SHOULD BE LIMITED TO DEV-TEST VIRTUAL MACHINES. WE STRONGLY RECOMMEND NOT TO USE THIS FOR ANY PRODUCTION VIRTUAL MACHINE.
 
 Azure's Virtual Machine Serial Console provides access to a text-based console for Linux and Windows Virtual Machines on Azure. This serial connection is to COM1 serial port of the virtual machine and provides access to the virtual machine regardless of that virtual machine's network / operating system state. Access to Serial Console for a virtual machine can be done only via Azure Portal and for those who have VM Contributor or above access.
 
 # About this repo
 
-This repo provides documenation and is used for issues/feedback for early access preview for this feature. Please refer to the complete docus [here](Azure-virtual-machine-serial-console.md) for details on Azure's serial console access. If you wish to contribute to the documentation and or provide feedback, please use this repo to do so. Thanks !
+This repo provides pre-release versions of documentation and is used for issues/feedback for for this feature. Please refer to the complete documentation for serial console using the links below: 
+
+#### [Documentation for using Serial Console with Linux VMs](http://aka.ms/serialconsolelinux)
+
+#### [Documentation for using Serial Console with  Windows VMs](http://aka.ms/serialconsolewindows)
+
+If you wish to contribute to the documentation and or provide feedback, please use this repo to do so. Thanks !
 
 # Contributing
 
