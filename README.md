@@ -5,7 +5,7 @@ Azure's Virtual Machine Serial Console provides access to a text-based console f
 
 # About this repo
 
-THe primary purpose of this repo is to collect issues and feedback for the serial console. This repo also contains pre-release versions of documentation. Please refer to the complete documentation for serial console using the links below: 
+The primary purpose of this repo is to collect issues and feedback for the serial console. This repo also contains pre-release versions of documentation, which are now all present in the main documentation pages. Please refer to the complete documentation for serial console using the links below: 
 
 #### [Documentation for using Serial Console with Linux VMs](http://aka.ms/serialconsolelinux)
 
