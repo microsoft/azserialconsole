@@ -1,17 +1,17 @@
-# Azure's Virtual Machine Serial Console -- Public Preview
-[!NOTE] Previews are made available to you on the condition that you agree to the terms of use. For more information, see [Microsoft Azure Supplemental Terms of Use for Microsoft Azure Previews.] (https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) ACCESS VIA SERIAL CONSOLE SHOULD BE LIMITED TO DEV-TEST VIRTUAL MACHINES. WE STRONGLY RECOMMEND NOT TO USE THIS FOR ANY PRODUCTION VIRTUAL MACHINE.
+# Azure's Virtual Machine Serial Console 
+[!NOTE] The Azure VM Serial Console is now generally available in all public Azure regions. Serial console is not yet available in Azure Government or China clouds.
 
-Azure's Virtual Machine Serial Console provides access to a text-based console for Linux and Windows Virtual Machines on Azure. This serial connection is to COM1 serial port of the virtual machine and provides access to the virtual machine regardless of that virtual machine's network / operating system state. Access to Serial Console for a virtual machine can be done only via Azure Portal and for those who have VM Contributor or above access.
+Azure's Virtual Machine Serial Console provides access to a text-based console for Linux and Windows Virtual Machines on Azure. This serial connection is to COM1 serial port of the virtual machine and provides access to the virtual machine regardless of that virtual machine's network/operating system state. Access to Serial Console for a virtual machine can be done only via Azure Portal and for those who have VM Contributor or above access.
 
 # About this repo
 
-This repo provides pre-release versions of documentation and is used for issues/feedback for for this feature. Please refer to the complete documentation for serial console using the links below: 
+THe primary purpose of this repo is to collect issues and feedback for the serial console. This repo also contains pre-release versions of documentation. Please refer to the complete documentation for serial console using the links below: 
 
 #### [Documentation for using Serial Console with Linux VMs](http://aka.ms/serialconsolelinux)
 
 #### [Documentation for using Serial Console with  Windows VMs](http://aka.ms/serialconsolewindows)
 
-If you wish to contribute to the documentation and or provide feedback, please use this repo to do so. Thanks !
+If you wish to contribute to the documentation and or provide feedback, please use this repo to do so. Feel free to post comments and suggestions to the Issues section. Thanks!
 
 # Contributing
 
