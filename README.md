@@ -1,5 +1,5 @@
 # Azure's Virtual Machine Serial Console 
-[!NOTE] The Azure VM Serial Console is now generally available in all public Azure regions. Serial console is not yet available in Azure Government or China clouds.
+> The Azure VM Serial Console is now generally available in all public Azure regions. Serial console is not yet available in Azure Government or China clouds.
 
 Azure's Virtual Machine Serial Console provides access to a text-based console for Linux and Windows Virtual Machines on Azure. This serial connection is to COM1 serial port of the virtual machine and provides access to the virtual machine regardless of that virtual machine's network/operating system state. Access to Serial Console for a virtual machine can be done only via Azure Portal and for those who have VM Contributor or above access.
 
