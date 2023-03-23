@@ -1,45 +1,38 @@
-# Azure's Virtual Machine Serial Console 
-> The Azure VM Serial Console is now generally available in all public Azure regions. Serial console is not yet available in Azure Government or China clouds.
+# Azure Serial Console issue and feature tracking
 
-Azure's Virtual Machine Serial Console provides access to a text-based console for Linux and Windows Virtual Machines on Azure. This serial connection is to COM1 serial port of the virtual machine and provides access to the virtual machine regardless of that virtual machine's network/operating system state. Access to Serial Console for a virtual machine can be done only via Azure Portal and for those who have VM Contributor or above access.
+## Overview
 
-# About this repo
+This repository is offered for tracking features and issues with the Azure Serial Console. This repository is monitored by the Azure Serial Console product team in order to engage with our community and discuss questions, customer scenarios, or feature requests.
 
-The primary purpose of this repo is to collect issues and feedback for the serial console. This repo also contains pre-release versions of documentation, which are now all present in the main documentation pages. Please refer to the complete documentation for serial console using the links below: 
+Support through issues on this repository is provided on a **best-effort basis** (see [Bug Guidance](#bugs) below). To receive urgent support you must file a support request through official Azure support channels as urgent support is explicitly out of scope of this repository's objectives.
 
-#### [Documentation for using Serial Console with Linux VMs](http://aka.ms/serialconsolelinux)
+> **IMPORTANT**: For official customer support with response-time SLAs please see [Azure Support options][1].
 
-#### [Documentation for using Serial Console with  Windows VMs](http://aka.ms/serialconsolewindows)
+## Important links
+* Documentation for using Azure Serial Console with Linux VMs: [http://aka.ms/serialconsolelinux](http://aka.ms/serialconsolelinux)
+* Documentation for using Azure Serial Console with Windows VMs: [http://aka.ms/serialconsolewindows](http://aka.ms/serialconsolewindows)
+* Updates about the service, including new features and new Azure regions:
+[Azure Serial Console feed in Azure Updates](https://azure.microsoft.com/en-us/updates/?query=serial+console)
 
-If you wish to contribute to the documentation and or provide feedback, please use this repo to do so. Feel free to post comments and suggestions to the Issues section. Thanks!
+## Code of conduct
 
-# Contributing
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+## Bug Reports <a name="bugs"></a>
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+> **IMPORTANT**: An inability to meet the below requirements for bug reports are subject to being closed by maintainers and routed to official Azure support channels to provide the proper support experience to resolve user issues.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Bug reports filed on this repository should follow the default issue template
+that is shown when opening a new issue. At a bare minimum, issues reported on
+this repository must contain the following information:
 
-# Legal Notices
+* A good title: Clear, relevant and descriptive - so that a general idea of the
+  problem can be grasped immediately
+* Description: Before you go into the detail of steps to replicate the issue,
+  you need a brief description.
+  * Assume that whomever is reading the report is unfamiliar with the
+    issue/system in question
+* Be sure to include any supporting information you might have that could aid the developers.
+  * This includes exact commands used, screenshots, etc.
 
-Microsoft and any contributors grant you a license to the Microsoft documentation and other content
-in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
-see the [LICENSE](LICENSE) file, and grant you a license to any code in the repository under the [MIT License](https://opensource.org/licenses/MIT), see the
-[LICENSE-CODE](LICENSE-CODE) file.
-
-Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation
-may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries.
-The licenses for this project do not grant you rights to use any Microsoft names, logos, or trademarks.
-Microsoft's general trademark guidelines can be found at http://go.microsoft.com/fwlink/?LinkID=254653.
-
-Privacy information can be found at https://privacy.microsoft.com/en-us/
-
-Microsoft and any contributors reserve all others rights, whether under their respective copyrights, patents,
-or trademarks, whether by implication, estoppel or otherwise.
+[1]: https://azure.microsoft.com/support/options/
